@@ -19,11 +19,6 @@ const Index = () => {
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 md:p-12">
         {/* Hero Section */}
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
-          <img 
-            src="/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png"
-            alt="DURTBAWL Character"
-            className="w-48 h-48 md:w-64 md:h-64 object-contain hover-scale mb-8"
-          />
           <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-4">
             DURTBAWL
           </h1>
