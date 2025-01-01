@@ -23,7 +23,7 @@ const Index = () => {
             DURTBAWL
           </h1>
           <p className="text-xl md:text-2xl text-white/80 mb-8">
-            The most colorful token in the Ethereum ecosystem
+            He's a lil durtbawl, but he's OUR durtbawl
           </p>
         </div>
 
