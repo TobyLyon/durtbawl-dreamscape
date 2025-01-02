@@ -120,7 +120,7 @@ const Index = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
               icon={Twitter}
-              href="https://twitter.com/durtbawl"
+              href="https://twitter.com/durtbawl_AI"
               label="Twitter"
             />
             <SocialButton
