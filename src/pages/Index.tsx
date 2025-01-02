@@ -71,15 +71,6 @@ const Index = () => {
         onToggleMusic={toggleMusic}
       />
 
-      {/* Title GIF */}
-      <div className="absolute top-4 left-0 w-full flex justify-center">
-        <img 
-          src="/text.gif" 
-          alt="Title GIF" 
-          className="max-w-[135%] md:max-w-[105%] lg:max-w-[90%] h-auto"
-        />
-      </div>
-
       {/* Custom Cursor */}
       <div
         className="custom-cursor"
