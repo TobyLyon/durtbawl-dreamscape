@@ -13,7 +13,7 @@ const ContractAddress = ({ address }: ContractAddressProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 w-full max-w-xl">
+    <div className="flex flex-col items-center gap-2 w-full max-w-md">
       <p className="text-sm text-white/60">Contract Address</p>
       <Button
         variant="outline"
