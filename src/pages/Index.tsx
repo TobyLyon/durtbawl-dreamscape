@@ -2,6 +2,7 @@ import { Twitter, Globe, Music, Music4 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Firework {
   id: number;
@@ -11,6 +12,7 @@ interface Firework {
 }
 
 const Index = () => {
+  const { toast } = useToast();
   const contractAddress = "0x1234567890123456789012345678901234567890";
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
@@ -25,17 +27,30 @@ const Index = () => {
     bgMusic.volume = 0.5;
     bgMusic.loop = true;
     
-    if (isStarted && isMusicOn) {
-      bgMusic.play().catch(err => console.log('Background music playback failed:', err));
-    } else {
-      bgMusic.pause();
-    }
+    const playMusic = async () => {
+      if (isStarted && isMusicOn) {
+        try {
+          await bgMusic.play();
+        } catch (err) {
+          console.log('Background music playback failed:', err);
+          toast({
+            title: "Music Playback Failed",
+            description: "Please click anywhere to enable music playback",
+            duration: 3000,
+          });
+        }
+      } else {
+        bgMusic.pause();
+      }
+    };
+
+    playMusic();
 
     return () => {
       bgMusic.pause();
       bgMusic.currentTime = 0;
     };
-  }, [isStarted, isMusicOn]);
+  }, [isStarted, isMusicOn, toast]);
 
   useEffect(() => {
     if (!isStarted) return;
@@ -76,11 +91,23 @@ const Index = () => {
   const handleClick = (e: React.MouseEvent) => {
     if (!isStarted) return;
     createFirework(e.clientX, e.clientY);
+    
+    // Try to resume music if it was interrupted
+    if (isMusicOn && bgMusicRef.current.paused) {
+      bgMusicRef.current.play().catch(err => console.log('Music resume failed:', err));
+    }
   };
 
   const toggleMusic = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent firework creation
     setIsMusicOn(!isMusicOn);
+  };
+
+  const handleStart = async () => {
+    setIsStarted(true);
+    // Pre-load audio context
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    await audioContext.resume();
   };
 
   if (!isStarted) {
@@ -96,7 +123,7 @@ const Index = () => {
         }}
       >
         <button
-          onClick={() => setIsStarted(true)}
+          onClick={handleStart}
           className="press-start text-4xl md:text-6xl text-white font-bold tracking-wider cursor-pointer"
         >
           PRESS START
