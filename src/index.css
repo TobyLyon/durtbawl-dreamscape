@@ -40,7 +40,18 @@
 }
 
 .glow {
-  box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.6),
+                0 0 40px rgba(155, 135, 245, 0.4),
+                0 0 50px rgba(255, 123, 0, 0.3);
+  }
 }
 
 .gradient-text {
