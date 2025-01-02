@@ -37,16 +37,16 @@ body {
   height: 30px;
   background: radial-gradient(
     circle,
-    rgba(217, 70, 239, 0.9) 0%, /* Magenta Pink */
-    rgba(139, 92, 246, 0.7) 30%, /* Vivid Purple */
-    rgba(14, 165, 233, 0.5) 60%, /* Ocean Blue */
+    rgba(217, 70, 239, 1) 0%, /* Increased opacity for Magenta Pink */
+    rgba(139, 92, 246, 0.9) 30%, /* Increased opacity for Vivid Purple */
+    rgba(14, 165, 233, 0.7) 60%, /* Increased opacity for Ocean Blue */
     transparent 100%
   );
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: screen;
-  filter: blur(2px) contrast(150%);
+  filter: blur(2px) contrast(200%); /* Increased contrast */
   animation: cursor-sparkle 1s infinite;
 }
 
