@@ -43,10 +43,12 @@ const Fireworks = forwardRef<FireworksRef>((_, ref) => {
       {fireworks.map(firework => (
         <div
           key={firework.id}
-          className="firework"
+          className="firework absolute pointer-events-none animate-fade-in"
           style={{
             left: `${firework.x}px`,
             top: `${firework.y}px`,
+            fontSize: '24px',
+            transform: 'translate(-50%, -50%)',
           }}
         >
           {firework.emoji}
