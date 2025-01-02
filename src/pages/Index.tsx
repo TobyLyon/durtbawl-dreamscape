@@ -32,7 +32,7 @@ const Index = () => {
   }, []);
 
   const createFirework = (x: number, y: number) => {
-    const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
+    const emojis = ['✨', '🌟', '💫', '⭐'];
     
     const newFireworks = Array.from({ length: 6 }, (_, i) => ({
       id: Date.now() + i,
@@ -98,7 +98,7 @@ const Index = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png')`,
+          backgroundImage: `url('/lovable-uploads/DURTBAWL.png')`,
         }}
       />
 
