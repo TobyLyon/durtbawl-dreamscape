@@ -121,7 +121,7 @@ const Index = () => {
             <SocialButton
               icon={Twitter}
               href="https://twitter.com/durtbawl"
-              label="Twitter"
+              label="X"
             />
             <SocialButton
               icon={Globe}
