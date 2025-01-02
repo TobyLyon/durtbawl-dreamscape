@@ -1,5 +1,5 @@
 import { Twitter, Globe } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 
@@ -16,6 +16,32 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
+  const bgMusicRef = useRef(new Audio('/Wii Music - Rate Your Vid.mp3'));
+
+  useEffect(() => {
+    // Background music setup
+    const bgMusic = bgMusicRef.current;
+    bgMusic.volume = 0.5; // Set volume to 50%
+    bgMusic.loop = true; // Enable looping
+    
+    // Start playing when component mounts
+    const playMusic = () => {
+      bgMusic.play().catch(err => console.log('Background music playback failed:', err));
+    };
+
+    // Add click event listener to start music (browsers require user interaction)
+    const handleFirstInteraction = () => {
+      playMusic();
+      document.removeEventListener('click', handleFirstInteraction);
+    };
+    document.addEventListener('click', handleFirstInteraction);
+
+    return () => {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      document.removeEventListener('click', handleFirstInteraction);
+    };
+  }, []);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -44,7 +70,7 @@ const Index = () => {
     setFireworks(prev => [...prev, ...newFireworks]);
     
     // Play sound effect
-    audio.currentTime = 0; // Reset audio to start
+    audio.currentTime = 0;
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
