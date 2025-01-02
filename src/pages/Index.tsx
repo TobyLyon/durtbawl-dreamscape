@@ -94,13 +94,13 @@ const Index = () => {
         </div>
       ))}
 
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/DURTBAWL.png')`,
-        }}
-      />
+     // Background Image
+<div 
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: `url('/DURTBAWL.png')`,
+  }}
+/>
 
       {/* Title GIF */}
       <div className="absolute top-4 left-0 w-full flex justify-center">
