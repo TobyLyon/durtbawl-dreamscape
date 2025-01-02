@@ -3,7 +3,7 @@ import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 
 const Index = () => {
-  const contractAddress = "0x1234567890123456789012345678901234567890"; // Replace with actual address
+  const contractAddress = "0x1234567890123456789012345678901234567890";
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -17,8 +17,11 @@ const Index = () => {
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 md:p-12">
-        {/* Hero Section - Empty for now */}
+        {/* Hero Section with Glittery Text */}
         <div className="flex-1 flex flex-col items-center justify-start pt-4 text-center max-w-4xl mx-auto">
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 furry-text gradient-text animate-pulse">
+            DURTBAWL
+          </h1>
         </div>
 
         {/* Social Links & Contract Address */}
