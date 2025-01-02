@@ -51,7 +51,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden" onClick={handleClick}>
+    <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
       {/* Custom Cursor */}
       <div
         className="custom-cursor"
@@ -106,7 +106,7 @@ const Index = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-end p-6 md:p-12">
+      <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
         {/* Social Links & Contract Address */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
           <ContractAddress address={contractAddress} />
