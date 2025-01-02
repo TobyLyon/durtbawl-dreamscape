@@ -37,16 +37,16 @@ body {
   height: 30px;
   background: radial-gradient(
     circle,
-    rgba(217, 70, 239, 1) 0%, /* Increased opacity for Magenta Pink */
-    rgba(139, 92, 246, 0.9) 30%, /* Increased opacity for Vivid Purple */
-    rgba(14, 165, 233, 0.7) 60%, /* Increased opacity for Ocean Blue */
+    rgba(217, 70, 239, 1) 0%,
+    rgba(139, 92, 246, 1) 30%,
+    rgba(14, 165, 233, 0.8) 60%,
     transparent 100%
   );
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: screen;
-  filter: blur(2px) contrast(200%); /* Increased contrast */
+  mix-blend-mode: plus-lighter;
+  filter: blur(2px) contrast(200%) brightness(150%);
   animation: cursor-sparkle 1s infinite;
 }
 
@@ -74,16 +74,16 @@ body {
   height: 15px;
   background: radial-gradient(
     circle,
-    rgba(249, 115, 22, 0.8) 0%, /* Bright Orange */
-    rgba(217, 70, 239, 0.6) 40%, /* Magenta Pink */
-    rgba(139, 92, 246, 0.4) 70%, /* Vivid Purple */
+    rgba(249, 115, 22, 1) 0%,
+    rgba(217, 70, 239, 0.8) 40%,
+    rgba(139, 92, 246, 0.6) 70%,
     transparent 100%
   );
   position: fixed;
   pointer-events: none;
   z-index: 9998;
-  mix-blend-mode: screen;
-  filter: blur(1px) contrast(150%);
+  mix-blend-mode: plus-lighter;
+  filter: blur(1px) contrast(150%) brightness(130%);
   transition: all 0.1s ease;
   animation: trail-sparkle 0.5s infinite;
 }
