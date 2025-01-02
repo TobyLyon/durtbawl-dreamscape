@@ -3,10 +3,18 @@ import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 
+interface Firework {
+  id: number;
+  x: number;
+  y: number;
+  color: string;
+}
+
 const Index = () => {
   const contractAddress = "0x1234567890123456789012345678901234567890";
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
+  const [fireworks, setFireworks] = useState<Firework[]>([]);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -22,8 +30,31 @@ const Index = () => {
     return () => window.removeEventListener('mousemove', updateCursor);
   }, []);
 
+  const createFirework = (x: number, y: number) => {
+    const colors = [
+      '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
+      '#ff00ff', '#00ffff', '#ff8800', '#ff0088'
+    ];
+    
+    const newFireworks = Array.from({ length: 3 }, (_, i) => ({
+      id: Date.now() + i,
+      x: x + (Math.random() - 0.5) * 100,
+      y: y + (Math.random() - 0.5) * 100,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    }));
+
+    setFireworks(prev => [...prev, ...newFireworks]);
+    setTimeout(() => {
+      setFireworks(prev => prev.filter(fw => !newFireworks.includes(fw)));
+    }, 500);
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    createFirework(e.clientX, e.clientY);
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden" onClick={handleClick}>
       {/* Custom Cursor */}
       <div
         className="custom-cursor"
@@ -46,6 +77,19 @@ const Index = () => {
         />
       ))}
 
+      {/* Fireworks */}
+      {fireworks.map(firework => (
+        <div
+          key={firework.id}
+          className="firework"
+          style={{
+            left: `${firework.x}px`,
+            top: `${firework.y}px`,
+            backgroundColor: firework.color
+          }}
+        />
+      ))}
+
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -59,7 +103,7 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="max-w-[80%] md:max-w-[60%] lg:max-w-[50%] h-auto"
+          className="max-w-[90%] md:max-w-[70%] lg:max-w-[60%] h-auto"
         />
       </div>
       
