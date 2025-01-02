@@ -15,10 +15,7 @@ const SocialButton = ({ icon: Icon, href, label, className }: SocialButtonProps)
       variant="ghost"
       size="lg"
       className={cn(
-        "social-button",
-        "flex items-center gap-2 text-white",
-        "bg-white/10 backdrop-blur-sm",
-        "transition-all duration-300 ease-out",
+        "hover-scale flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm",
         className
       )}
       onClick={() => window.open(href, "_blank")}

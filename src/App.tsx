@@ -18,6 +18,13 @@ const App: React.FC = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <img 
+              src="/text.gif" 
+              alt="Title GIF" 
+              style={{ maxWidth: "100%", height: "auto" }} 
+            />
+          </div>
           <Routes>
             <Route path="/" element={<Index />} />
           </Routes>

@@ -21,9 +21,8 @@ const Index = () => {
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
       
-      const newTrailId = Date.now() + Math.random(); // Ensure unique IDs
       setTrails(prev => [
-        { x: e.clientX, y: e.clientY, id: newTrailId },
+        { x: e.clientX, y: e.clientY, id: Date.now() },
         ...prev.slice(0, 5),
       ]);
     };
@@ -36,7 +35,7 @@ const Index = () => {
     const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
     
     const newFireworks = Array.from({ length: 6 }, (_, i) => ({
-      id: Date.now() + i + Math.random(), // Ensure unique IDs
+      id: Date.now() + i,
       x: x + (Math.random() - 0.5) * 200,
       y: y + (Math.random() - 0.5) * 200,
       emoji: emojis[Math.floor(Math.random() * emojis.length)]
@@ -44,8 +43,8 @@ const Index = () => {
 
     setFireworks(prev => [...prev, ...newFireworks]);
     
-    audio.currentTime = 0;
-    audio.volume = 0.5;
+    // Play sound effect
+    audio.currentTime = 0; // Reset audio to start
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
@@ -59,15 +58,6 @@ const Index = () => {
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
-      {/* Title GIF */}
-      <div className="absolute top-4 left-0 w-full flex justify-center z-50">
-        <img 
-          src="/text.gif" 
-          alt="Title GIF" 
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      </div>
-
       {/* Custom Cursor */}
       <div
         className="custom-cursor"
@@ -77,23 +67,24 @@ const Index = () => {
         }}
       />
       
-      {trails.map((trail) => (
+      {/* Cursor Trails */}
+      {trails.map((trail, index) => (
         <div
           key={trail.id}
           className="cursor-trail"
           style={{
             left: `${trail.x - 5}px`,
             top: `${trail.y - 5}px`,
-            opacity: 0.8,
+            opacity: 1 - (index * 0.15),
           }}
         />
       ))}
 
       {/* Fireworks */}
-      {fireworks.map((firework) => (
+      {fireworks.map(firework => (
         <div
           key={firework.id}
-          className="firework pointer-events-none"
+          className="firework"
           style={{
             left: `${firework.x}px`,
             top: `${firework.y}px`,
@@ -111,8 +102,18 @@ const Index = () => {
         }}
       />
 
+      {/* Title GIF */}
+      <div className="absolute top-4 left-0 w-full flex justify-center">
+        <img 
+          src="/text.gif" 
+          alt="Title GIF" 
+          className="max-w-[135%] md:max-w-[105%] lg:max-w-[90%] h-auto"
+        />
+      </div>
+      
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
+        {/* Social Links & Contract Address */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
           <ContractAddress address={contractAddress} />
           

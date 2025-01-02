@@ -99,24 +99,6 @@ body {
   }
 }
 
-/* Social Button Animation */
-.social-button {
-  position: relative;
-  overflow: hidden;
-  transform: translateZ(0);
-}
-
-.social-button:hover {
-  transform: scale(1.05);
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-.social-button:active {
-  transform: scale(0.95);
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 /* Firework Animation */
 @keyframes explode {
   0% {
@@ -143,28 +125,54 @@ body {
   background: linear-gradient(135deg, #FF3366 0%, #FF7F50 100%);
 }
 
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.furry-text {
+  position: relative;
+  color: #4a3527;
+  text-shadow: 
+    2px 2px 0px #2d1810,
+    -2px -2px 0px #2d1810,
+    4px 4px 0px #65493a,
+    6px 6px 0px #8b6d5c;
+  letter-spacing: 2px;
+}
+
+.furry-text::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(139, 109, 92, 0.3) 0%,
+    rgba(74, 53, 39, 0.1) 50%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  z-index: -1;
+  animation: fur-wave 3s ease-in-out infinite;
+}
+
+@keyframes fur-wave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #9b87f5 0%, #FF3366 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Press Start Animation */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.7;
-  }
-}
-
-.press-start {
-  animation: pulse 1.5s infinite;
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.8),
-    0 0 30px rgba(255, 255, 255, 0.8);
 }
