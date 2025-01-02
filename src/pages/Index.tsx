@@ -56,9 +56,9 @@ const Index = () => {
       />
       
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 md:p-12">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-end p-6 md:p-12">
         {/* Social Links & Contract Address */}
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8">
+        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
           <ContractAddress address={contractAddress} />
           
           <div className="flex flex-wrap justify-center gap-4">
