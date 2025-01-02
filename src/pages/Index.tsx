@@ -97,11 +97,11 @@ const Index = () => {
       />
 
       {/* Title GIF */}
-      <div className="absolute top-0 left-0 w-full flex justify-center pt-20">
+      <div className="absolute top-12 left-0 w-full flex justify-center">
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="max-w-[90%] md:max-w-[70%] lg:max-w-[60%] h-auto"
+          className="max-w-[180%] md:max-w-[140%] lg:max-w-[120%] h-auto"
         />
       </div>
       
