@@ -39,18 +39,41 @@
   transform: scale(1.05);
 }
 
-.glow {
-  animation: glow 2s ease-in-out infinite alternate;
+.furry-text {
+  position: relative;
+  color: #4a3527;
+  text-shadow: 
+    2px 2px 0px #2d1810,
+    -2px -2px 0px #2d1810,
+    4px 4px 0px #65493a,
+    6px 6px 0px #8b6d5c;
+  letter-spacing: 2px;
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+.furry-text::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(139, 109, 92, 0.3) 0%,
+    rgba(74, 53, 39, 0.1) 50%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  z-index: -1;
+  animation: fur-wave 3s ease-in-out infinite;
+}
+
+@keyframes fur-wave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
   }
-  to {
-    box-shadow: 0 0 30px rgba(255, 51, 102, 0.6),
-                0 0 40px rgba(155, 135, 245, 0.4),
-                0 0 50px rgba(255, 123, 0, 0.3);
+  50% {
+    transform: translateY(-2px) scale(1.02);
   }
 }
 
