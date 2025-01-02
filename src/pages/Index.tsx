@@ -71,7 +71,7 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="max-w-[80%] md:max-w-[60%] lg:max-w-[40%] h-auto"
+          style={{ maxWidth: "100%", height: "auto" }}
         />
       </div>
 
