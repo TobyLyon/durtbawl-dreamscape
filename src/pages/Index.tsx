@@ -15,7 +15,7 @@ const Index = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
-  const [audio] = useState(new Audio('/firework-sound.mp3'));
+  const [audio] = useState(new Audio('/firework-sound.wav'));
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -103,11 +103,11 @@ const Index = () => {
       />
 
       {/* Title GIF */}
-      <div className="absolute top-12 left-0 w-full flex justify-center">
+      <div className="absolute top-4 left-0 w-full flex justify-center">
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="max-w-[180%] md:max-w-[140%] lg:max-w-[120%] h-auto"
+          className="max-w-[135%] md:max-w-[105%] lg:max-w-[90%] h-auto"
         />
       </div>
       
