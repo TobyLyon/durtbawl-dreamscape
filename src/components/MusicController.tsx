@@ -1,6 +1,6 @@
 import { Music4, Music } from "lucide-react";
-import { useAudio } from "@/hooks/useAudio";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { createAudioElement } from "@/utils/audioUtils";
 
 interface MusicControllerProps {
   isStarted: boolean;
@@ -9,18 +9,22 @@ interface MusicControllerProps {
 }
 
 const MusicController = ({ isStarted, isMusicOn, onToggleMusic }: MusicControllerProps) => {
-  const { play, pause } = useAudio('/Wii Music - Rate Your Vid.mp3', {
-    loop: true,
-    volume: 0.5
-  });
+  const bgMusicRef = useRef(createAudioElement('/Wii Music - Rate Your Vid.mp3'));
 
   useEffect(() => {
+    const bgMusic = bgMusicRef.current;
+    
     if (isStarted && isMusicOn) {
-      play();
+      bgMusic.play();
     } else {
-      pause();
+      bgMusic.pause();
     }
-  }, [isStarted, isMusicOn, play, pause]);
+
+    return () => {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+    };
+  }, [isStarted, isMusicOn]);
 
   return (
     <button

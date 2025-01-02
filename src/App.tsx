@@ -18,16 +18,11 @@ const App: React.FC = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="fixed top-0 left-0 w-full z-50 p-4">
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
             <img 
               src="/text.gif" 
               alt="Title GIF" 
-              style={{ 
-                maxWidth: "100%", 
-                height: "auto",
-                margin: "0 auto",
-                display: "block"
-              }} 
+              style={{ maxWidth: "100%", height: "auto" }} 
             />
           </div>
           <Routes>
