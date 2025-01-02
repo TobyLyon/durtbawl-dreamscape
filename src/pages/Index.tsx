@@ -45,10 +45,10 @@ const Index = () => {
 
     setFireworks(prev => [...prev, ...newFireworks]);
     
-    if (!isMusicOn) {  // Only play firework sound if music is off
-      audio.currentTime = 0;
-      audio.play().catch(err => console.log('Audio playback failed:', err));
-    }
+    // Always play firework sound, regardless of music state
+    audio.currentTime = 0;
+    audio.volume = 0.3; // Lower volume for better balance
+    audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
       setFireworks(prev => prev.filter(fw => !newFireworks.includes(fw)));
