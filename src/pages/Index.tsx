@@ -12,10 +12,9 @@ const Index = () => {
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
       
-      // Add new trail point
       setTrails(prev => [
         { x: e.clientX, y: e.clientY, id: Date.now() },
-        ...prev.slice(0, 5), // Keep only 6 trail points
+        ...prev.slice(0, 5),
       ]);
     };
 
@@ -54,6 +53,15 @@ const Index = () => {
           backgroundImage: `url('/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png')`,
         }}
       />
+
+      {/* Title GIF */}
+      <div className="absolute top-0 left-0 w-full flex justify-center pt-20">
+        <img 
+          src="/text.gif" 
+          alt="Title GIF" 
+          className="max-w-[80%] md:max-w-[60%] lg:max-w-[50%] h-auto"
+        />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-end p-6 md:p-12">
