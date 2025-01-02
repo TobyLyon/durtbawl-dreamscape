@@ -1,6 +1,5 @@
 import { Music4, Music } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { createAudioElement } from "@/utils/audioUtils";
 
 interface MusicControllerProps {
@@ -10,39 +9,22 @@ interface MusicControllerProps {
 }
 
 const MusicController = ({ isStarted, isMusicOn, onToggleMusic }: MusicControllerProps) => {
-  const { toast } = useToast();
   const bgMusicRef = useRef(createAudioElement('/Wii Music - Rate Your Vid.mp3'));
 
   useEffect(() => {
     const bgMusic = bgMusicRef.current;
     
-    const playMusic = async () => {
-      if (isStarted && isMusicOn) {
-        try {
-          const playPromise = bgMusic.play();
-          if (playPromise !== undefined) {
-            await playPromise;
-          }
-        } catch (err) {
-          console.error('Background music playback failed:', err);
-          toast({
-            title: "Music Playback Failed",
-            description: "Please interact with the page to enable music",
-            duration: 5000,
-          });
-        }
-      } else {
-        bgMusic.pause();
-      }
-    };
-
-    playMusic();
+    if (isStarted && isMusicOn) {
+      bgMusic.play();
+    } else {
+      bgMusic.pause();
+    }
 
     return () => {
       bgMusic.pause();
       bgMusic.currentTime = 0;
     };
-  }, [isStarted, isMusicOn, toast]);
+  }, [isStarted, isMusicOn]);
 
   return (
     <button

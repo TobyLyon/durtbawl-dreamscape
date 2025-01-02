@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 import MusicController from "@/components/MusicController";
-import StartScreen from "@/components/StartScreen";
 
 interface Firework {
   id: number;
@@ -18,12 +17,9 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const [isStarted, setIsStarted] = useState(false);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   useEffect(() => {
-    if (!isStarted) return;
-
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
       
@@ -35,7 +31,7 @@ const Index = () => {
 
     window.addEventListener('mousemove', updateCursor);
     return () => window.removeEventListener('mousemove', updateCursor);
-  }, [isStarted]);
+  }, []);
 
   const createFirework = (x: number, y: number) => {
     const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
@@ -58,23 +54,18 @@ const Index = () => {
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    if (!isStarted) return;
     createFirework(e.clientX, e.clientY);
   };
 
   const toggleMusic = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent firework creation
+    e.stopPropagation();
     setIsMusicOn(!isMusicOn);
   };
-
-  if (!isStarted) {
-    return <StartScreen onStart={() => setIsStarted(true)} />;
-  }
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
       <MusicController 
-        isStarted={isStarted}
+        isStarted={true}
         isMusicOn={isMusicOn}
         onToggleMusic={toggleMusic}
       />
