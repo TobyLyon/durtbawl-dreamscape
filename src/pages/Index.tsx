@@ -7,7 +7,7 @@ interface Firework {
   id: number;
   x: number;
   y: number;
-  color: string;
+  emoji: string;
 }
 
 const Index = () => {
@@ -31,22 +31,19 @@ const Index = () => {
   }, []);
 
   const createFirework = (x: number, y: number) => {
-    const colors = [
-      '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
-      '#ff00ff', '#00ffff', '#ff8800', '#ff0088'
-    ];
+    const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
     
-    const newFireworks = Array.from({ length: 3 }, (_, i) => ({
+    const newFireworks = Array.from({ length: 6 }, (_, i) => ({
       id: Date.now() + i,
-      x: x + (Math.random() - 0.5) * 100,
-      y: y + (Math.random() - 0.5) * 100,
-      color: colors[Math.floor(Math.random() * colors.length)]
+      x: x + (Math.random() - 0.5) * 200,
+      y: y + (Math.random() - 0.5) * 200,
+      emoji: emojis[Math.floor(Math.random() * emojis.length)]
     }));
 
     setFireworks(prev => [...prev, ...newFireworks]);
     setTimeout(() => {
       setFireworks(prev => prev.filter(fw => !newFireworks.includes(fw)));
-    }, 500);
+    }, 800);
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -59,8 +56,8 @@ const Index = () => {
       <div
         className="custom-cursor"
         style={{
-          left: `${cursorPosition.x - 10}px`,
-          top: `${cursorPosition.y - 10}px`,
+          left: `${cursorPosition.x - 15}px`,
+          top: `${cursorPosition.y - 15}px`,
         }}
       />
       
@@ -85,9 +82,10 @@ const Index = () => {
           style={{
             left: `${firework.x}px`,
             top: `${firework.y}px`,
-            backgroundColor: firework.color
           }}
-        />
+        >
+          {firework.emoji}
+        </div>
       ))}
 
       {/* Background Image */}
