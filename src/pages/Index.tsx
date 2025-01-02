@@ -1,16 +1,16 @@
 import { Twitter, Globe } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 import MusicController from "@/components/MusicController";
 import CustomCursor from "@/components/CustomCursor";
-import Fireworks from "@/components/Fireworks";
+import Fireworks, { FireworksRef } from "@/components/Fireworks";
 
 const Index = () => {
   const contractAddress = "0x1234567890123456789012345678901234567890";
   const [isMusicOn, setIsMusicOn] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
-  const [fireworksRef, setFireworksRef] = useState<any>(null);
+  const fireworksRef = useRef<FireworksRef>(null);
 
   const toggleMusic = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -23,8 +23,8 @@ const Index = () => {
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    if (fireworksRef && fireworksRef.createFirework) {
-      fireworksRef.createFirework(e.clientX, e.clientY);
+    if (fireworksRef.current) {
+      fireworksRef.current.createFirework(e.clientX, e.clientY);
     }
   };
 

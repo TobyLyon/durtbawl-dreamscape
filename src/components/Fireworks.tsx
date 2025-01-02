@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef, useImperativeHandle } from 'react';
 import { useAudio } from '@/hooks/useAudio';
 
 interface Firework {
@@ -8,7 +8,11 @@ interface Firework {
   emoji: string;
 }
 
-const Fireworks = () => {
+export interface FireworksRef {
+  createFirework: (x: number, y: number) => void;
+}
+
+const Fireworks = forwardRef<FireworksRef>((_, ref) => {
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const { play: playSound } = useAudio('/firework-sound.wav');
 
@@ -30,6 +34,10 @@ const Fireworks = () => {
     }, 800);
   };
 
+  useImperativeHandle(ref, () => ({
+    createFirework
+  }));
+
   return (
     <>
       {fireworks.map(firework => (
@@ -46,6 +54,8 @@ const Fireworks = () => {
       ))}
     </>
   );
-};
+});
+
+Fireworks.displayName = 'Fireworks';
 
 export default Fireworks;
