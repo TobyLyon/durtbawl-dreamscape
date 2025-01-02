@@ -133,46 +133,5 @@ body {
   transform: scale(1.05);
 }
 
-.furry-text {
-  position: relative;
-  color: #4a3527;
-  text-shadow: 
-    2px 2px 0px #2d1810,
-    -2px -2px 0px #2d1810,
-    4px 4px 0px #65493a,
-    6px 6px 0px #8b6d5c;
-  letter-spacing: 2px;
-}
 
-.furry-text::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(139, 109, 92, 0.3) 0%,
-    rgba(74, 53, 39, 0.1) 50%,
-    transparent 100%
-  );
-  filter: blur(4px);
-  z-index: -1;
-  animation: fur-wave 3s ease-in-out infinite;
-}
-
-@keyframes fur-wave {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-2px) scale(1.02);
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #9b87f5 0%, #FF3366 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
