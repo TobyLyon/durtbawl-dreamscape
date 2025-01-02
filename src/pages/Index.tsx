@@ -17,16 +17,8 @@ const Index = () => {
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 md:p-12">
-        {/* Hero Section */}
+        {/* Hero Section - Empty for now */}
         <div className="flex-1 flex flex-col items-center justify-start pt-4 text-center max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-black mb-4 furry-text transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-            DURTBAWL
-          </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 
-            [text-shadow:_1px_1px_2px_rgba(0,0,0,0.6)]
-            hover:scale-105 transition-transform duration-300 cursor-pointer">
-            He's a lil durtbawl, but he's OUR durtbawl
-          </p>
         </div>
 
         {/* Social Links & Contract Address */}
