@@ -44,7 +44,7 @@ const Index = () => {
     setFireworks(prev => [...prev, ...newFireworks]);
     
     audio.currentTime = 0;
-    audio.volume = 0.3;
+    audio.volume = 0.5;  // Increased from 0.3 to 0.5
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
