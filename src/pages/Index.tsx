@@ -88,13 +88,14 @@ const Index = () => {
         </div>
       ))}
 
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png')`,
-        }}
-      />
+      {/* Title GIF */}
+      <div className="absolute top-0 left-0 w-full flex justify-center pt-20">
+        <img 
+          src="/text.gif" 
+          alt="Title GIF" 
+          className="max-w-[90%] md:max-w-[70%] lg:max-w-[60%] h-auto"
+        />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-end p-6 md:p-12">
