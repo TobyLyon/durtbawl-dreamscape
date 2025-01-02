@@ -17,7 +17,7 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const [isMusicOn, setIsMusicOn] = useState(true);
+  const [isMusicOn, setIsMusicOn] = useState(false);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -45,8 +45,10 @@ const Index = () => {
 
     setFireworks(prev => [...prev, ...newFireworks]);
     
-    audio.currentTime = 0;
-    audio.play().catch(err => console.log('Audio playback failed:', err));
+    if (!isMusicOn) {  // Only play firework sound if music is off
+      audio.currentTime = 0;
+      audio.play().catch(err => console.log('Audio playback failed:', err));
+    }
     
     setTimeout(() => {
       setFireworks(prev => prev.filter(fw => !newFireworks.includes(fw)));
@@ -65,7 +67,6 @@ const Index = () => {
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
       <MusicController 
-        isStarted={true}
         isMusicOn={isMusicOn}
         onToggleMusic={toggleMusic}
       />
@@ -95,7 +96,7 @@ const Index = () => {
       {fireworks.map(firework => (
         <div
           key={firework.id}
-          className="firework"
+          className="firework pointer-events-none"
           style={{
             left: `${firework.x}px`,
             top: `${firework.y}px`,
@@ -113,15 +114,6 @@ const Index = () => {
         }}
       />
 
-      {/* Title GIF */}
-      <div className="absolute top-4 left-0 w-full flex justify-center">
-        <img 
-          src="/text.gif" 
-          alt="Title GIF" 
-          className="max-w-[135%] md:max-w-[105%] lg:max-w-[90%] h-auto"
-        />
-      </div>
-      
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
