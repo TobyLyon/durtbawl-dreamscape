@@ -19,10 +19,14 @@ const Index = () => {
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 md:p-12">
         {/* Hero Section - Moved to top with padding */}
         <div className="flex-1 flex flex-col items-center justify-start pt-12 text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-pulse hover:animate-bounce cursor-pointer 
+            [text-shadow:_2px_2px_0_rgb(255_51_102),_4px_4px_0_rgb(155_135_245)] 
+            bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 
+            bg-clip-text text-transparent 
+            transition-all duration-300 hover:scale-105">
             DURTBAWL
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-8">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 animate-fade-in">
             He's a lil durtbawl, but he's OUR durtbawl
           </p>
         </div>
