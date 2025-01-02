@@ -17,7 +17,7 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const [isMusicOn, setIsMusicOn] = useState(true);
+  const [isMusicOn, setIsMusicOn] = useState(false);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -60,6 +60,10 @@ const Index = () => {
   const toggleMusic = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsMusicOn(!isMusicOn);
+  };
+
+  const handleContractClick = () => {
+    setIsMusicOn(true);
   };
 
   return (
@@ -125,7 +129,9 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
-          <ContractAddress address={contractAddress} />
+          <div onClick={handleContractClick}>
+            <ContractAddress address={contractAddress} />
+          </div>
           
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
