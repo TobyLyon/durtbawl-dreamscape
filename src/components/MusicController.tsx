@@ -1,5 +1,6 @@
 import { Music4, Music } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useAudio } from "@/hooks/useAudio";
+import { useEffect } from "react";
 
 interface MusicControllerProps {
   isStarted: boolean;
@@ -8,35 +9,18 @@ interface MusicControllerProps {
 }
 
 const MusicController = ({ isStarted, isMusicOn, onToggleMusic }: MusicControllerProps) => {
-  const [audio] = useState(new Audio('/Wii Music - Rate Your Vid.mp3'));
-  const hasInitialized = useRef(false);
+  const { play, pause } = useAudio('/Wii Music - Rate Your Vid.mp3', {
+    loop: true,
+    volume: 0.5
+  });
 
   useEffect(() => {
-    audio.loop = true;
-    audio.volume = 0.5;
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }, [audio]);
-
-  useEffect(() => {
-    if (!hasInitialized.current && isStarted && isMusicOn) {
-      hasInitialized.current = true;
-    }
-
     if (isStarted && isMusicOn) {
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Playback prevented:", error);
-        });
-      }
+      play();
     } else {
-      audio.pause();
+      pause();
     }
-  }, [isStarted, isMusicOn, audio]);
+  }, [isStarted, isMusicOn, play, pause]);
 
   return (
     <button
