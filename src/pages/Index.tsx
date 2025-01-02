@@ -2,7 +2,6 @@ import { Twitter, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
-import MusicController from "@/components/MusicController";
 
 interface Firework {
   id: number;
@@ -17,7 +16,6 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const [isMusicOn, setIsMusicOn] = useState(false);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -45,9 +43,8 @@ const Index = () => {
 
     setFireworks(prev => [...prev, ...newFireworks]);
     
-    // Always play firework sound, regardless of music state
     audio.currentTime = 0;
-    audio.volume = 0.3; // Lower volume for better balance
+    audio.volume = 0.3;
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
@@ -57,11 +54,6 @@ const Index = () => {
 
   const handleClick = (e: React.MouseEvent) => {
     createFirework(e.clientX, e.clientY);
-  };
-
-  const toggleMusic = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsMusicOn(!isMusicOn);
   };
 
   return (
@@ -74,11 +66,6 @@ const Index = () => {
           style={{ maxWidth: "100%", height: "auto" }}
         />
       </div>
-
-      <MusicController 
-        isMusicOn={isMusicOn}
-        onToggleMusic={toggleMusic}
-      />
 
       {/* Custom Cursor */}
       <div
