@@ -17,33 +17,26 @@ const Index = () => {
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
   const bgMusicRef = useRef(new Audio('/Wii Music - Rate Your Vid.mp3'));
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
-    // Background music setup
     const bgMusic = bgMusicRef.current;
-    bgMusic.volume = 0.5; // Set volume to 50%
-    bgMusic.loop = true; // Enable looping
+    bgMusic.volume = 0.5;
+    bgMusic.loop = true;
     
-    // Start playing when component mounts
-    const playMusic = () => {
+    if (isStarted) {
       bgMusic.play().catch(err => console.log('Background music playback failed:', err));
-    };
-
-    // Add click event listener to start music (browsers require user interaction)
-    const handleFirstInteraction = () => {
-      playMusic();
-      document.removeEventListener('click', handleFirstInteraction);
-    };
-    document.addEventListener('click', handleFirstInteraction);
+    }
 
     return () => {
       bgMusic.pause();
       bgMusic.currentTime = 0;
-      document.removeEventListener('click', handleFirstInteraction);
     };
-  }, []);
+  }, [isStarted]);
 
   useEffect(() => {
+    if (!isStarted) return;
+
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
       
@@ -55,7 +48,7 @@ const Index = () => {
 
     window.addEventListener('mousemove', updateCursor);
     return () => window.removeEventListener('mousemove', updateCursor);
-  }, []);
+  }, [isStarted]);
 
   const createFirework = (x: number, y: number) => {
     const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
@@ -69,7 +62,6 @@ const Index = () => {
 
     setFireworks(prev => [...prev, ...newFireworks]);
     
-    // Play sound effect
     audio.currentTime = 0;
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
@@ -79,8 +71,31 @@ const Index = () => {
   };
 
   const handleClick = (e: React.MouseEvent) => {
+    if (!isStarted) return;
     createFirework(e.clientX, e.clientY);
   };
+
+  if (!isStarted) {
+    return (
+      <div 
+        className="h-screen w-full fixed inset-0 flex items-center justify-center bg-black"
+        style={{
+          backgroundImage: `url('/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundBlendMode: 'overlay',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)'
+        }}
+      >
+        <button
+          onClick={() => setIsStarted(true)}
+          className="press-start text-4xl md:text-6xl text-white font-bold tracking-wider cursor-pointer"
+        >
+          PRESS START
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
