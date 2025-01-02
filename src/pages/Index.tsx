@@ -21,8 +21,9 @@ const Index = () => {
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
       
+      const newTrailId = Date.now() + Math.random(); // Ensure unique IDs
       setTrails(prev => [
-        { x: e.clientX, y: e.clientY, id: Date.now() },
+        { x: e.clientX, y: e.clientY, id: newTrailId },
         ...prev.slice(0, 5),
       ]);
     };
@@ -35,7 +36,7 @@ const Index = () => {
     const emojis = ['✨', '🌟', '💫', '⭐', '🎆', '🎇', '🌠'];
     
     const newFireworks = Array.from({ length: 6 }, (_, i) => ({
-      id: Date.now() + i,
+      id: Date.now() + i + Math.random(), // Ensure unique IDs
       x: x + (Math.random() - 0.5) * 200,
       y: y + (Math.random() - 0.5) * 200,
       emoji: emojis[Math.floor(Math.random() * emojis.length)]
@@ -44,7 +45,7 @@ const Index = () => {
     setFireworks(prev => [...prev, ...newFireworks]);
     
     audio.currentTime = 0;
-    audio.volume = 0.5;  // Increased from 0.3 to 0.5
+    audio.volume = 0.5;
     audio.play().catch(err => console.log('Audio playback failed:', err));
     
     setTimeout(() => {
@@ -76,20 +77,20 @@ const Index = () => {
         }}
       />
       
-      {trails.map((trail, index) => (
+      {trails.map((trail) => (
         <div
           key={trail.id}
           className="cursor-trail"
           style={{
             left: `${trail.x - 5}px`,
             top: `${trail.y - 5}px`,
-            opacity: 1 - (index * 0.15),
+            opacity: 0.8,
           }}
         />
       ))}
 
       {/* Fireworks */}
-      {fireworks.map(firework => (
+      {fireworks.map((firework) => (
         <div
           key={firework.id}
           className="firework pointer-events-none"

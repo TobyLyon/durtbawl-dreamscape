@@ -15,8 +15,8 @@ const SocialButton = ({ icon: Icon, href, label, className }: SocialButtonProps)
       variant="ghost"
       size="lg"
       className={cn(
-        "hover-scale flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm",
-        "transition-all duration-200 ease-in-out",
+        "flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm",
+        "transition-all duration-300 ease-in-out transform",
         "hover:bg-white/20 hover:shadow-lg hover:scale-105",
         "active:scale-95 active:bg-white/30",
         className
