@@ -126,7 +126,7 @@ const Index = () => {
             <SocialButton
               icon={Globe}
               href="https://durtbawl.com"
-              label="Website"
+              label="Virtuals App"
             />
           </div>
         </div>
