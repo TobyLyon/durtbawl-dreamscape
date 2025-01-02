@@ -10,6 +10,7 @@ const Index = () => {
   const contractAddress = "0x1234567890123456789012345678901234567890";
   const [isMusicOn, setIsMusicOn] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
+  const [fireworksRef, setFireworksRef] = useState<any>(null);
 
   const toggleMusic = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -21,14 +22,14 @@ const Index = () => {
     setIsMusicOn(true);
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (fireworksRef && fireworksRef.createFirework) {
+      fireworksRef.createFirework(e.clientX, e.clientY);
+    }
+  };
+
   return (
-    <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={(e) => {
-      const fireworksComponent = document.querySelector('div[data-fireworks]');
-      if (fireworksComponent) {
-        // @ts-ignore
-        fireworksComponent.createFirework(e.clientX, e.clientY);
-      }
-    }}>
+    <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
       <MusicController 
         isStarted={isStarted}
         isMusicOn={isMusicOn}
@@ -36,7 +37,7 @@ const Index = () => {
       />
 
       <CustomCursor />
-      <Fireworks />
+      <Fireworks ref={fireworksRef} />
 
       {/* Background Image */}
       <div 

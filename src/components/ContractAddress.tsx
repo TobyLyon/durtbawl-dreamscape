@@ -19,7 +19,7 @@ const ContractAddress = ({ address }: ContractAddressProps) => {
       </p>
       <Button
         variant="outline"
-        className="w-full font-mono text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-105 group-hover:border-white/40 transition-all"
+        className="w-full font-mono text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-105 group-hover:border-white/40 transition-all duration-200"
         onClick={copyAddress}
       >
         <span className="truncate">{address}</span>
