@@ -8,7 +8,9 @@ import Index from "./pages/Index";
 // Import React
 import React from "react";
 
-// Import your image
+// Initialize QueryClient
+const queryClient = new QueryClient();
+
 const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
