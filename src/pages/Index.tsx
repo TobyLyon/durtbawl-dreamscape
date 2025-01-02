@@ -1,8 +1,9 @@
-import { Twitter, Globe, Music, Music4 } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { Twitter, Globe } from "lucide-react";
+import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
-import { useToast } from "@/components/ui/use-toast";
+import MusicController from "@/components/MusicController";
+import StartScreen from "@/components/StartScreen";
 
 interface Firework {
   id: number;
@@ -12,45 +13,13 @@ interface Firework {
 }
 
 const Index = () => {
-  const { toast } = useToast();
   const contractAddress = "0x1234567890123456789012345678901234567890";
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const bgMusicRef = useRef(new Audio('/Wii Music - Rate Your Vid.mp3'));
   const [isStarted, setIsStarted] = useState(false);
   const [isMusicOn, setIsMusicOn] = useState(true);
-
-  useEffect(() => {
-    const bgMusic = bgMusicRef.current;
-    bgMusic.volume = 0.5;
-    bgMusic.loop = true;
-    
-    const playMusic = async () => {
-      if (isStarted && isMusicOn) {
-        try {
-          await bgMusic.play();
-        } catch (err) {
-          console.log('Background music playback failed:', err);
-          toast({
-            title: "Music Playback Failed",
-            description: "Please click anywhere to enable music playback",
-            duration: 3000,
-          });
-        }
-      } else {
-        bgMusic.pause();
-      }
-    };
-
-    playMusic();
-
-    return () => {
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-    };
-  }, [isStarted, isMusicOn, toast]);
 
   useEffect(() => {
     if (!isStarted) return;
@@ -91,11 +60,6 @@ const Index = () => {
   const handleClick = (e: React.MouseEvent) => {
     if (!isStarted) return;
     createFirework(e.clientX, e.clientY);
-    
-    // Try to resume music if it was interrupted
-    if (isMusicOn && bgMusicRef.current.paused) {
-      bgMusicRef.current.play().catch(err => console.log('Music resume failed:', err));
-    }
   };
 
   const toggleMusic = (e: React.MouseEvent) => {
@@ -103,52 +67,17 @@ const Index = () => {
     setIsMusicOn(!isMusicOn);
   };
 
-  const handleStart = async () => {
-    setIsStarted(true);
-    // Pre-load audio context
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    await audioContext.resume();
-  };
-
   if (!isStarted) {
-    return (
-      <div 
-        className="h-screen w-full fixed inset-0 flex items-center justify-center bg-black"
-        style={{
-          backgroundImage: `url('/lovable-uploads/48af7768-67d7-4f6a-bcd2-42a710962483.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)'
-        }}
-      >
-        <button
-          onClick={handleStart}
-          className="press-start text-4xl md:text-6xl text-white font-bold tracking-wider cursor-pointer"
-        >
-          PRESS START
-        </button>
-      </div>
-    );
+    return <StartScreen onStart={() => setIsStarted(true)} />;
   }
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
-      {/* Music Toggle Button */}
-      <button
-        onClick={toggleMusic}
-        className="fixed top-4 right-4 z-50 p-4 rounded-full hover:scale-110 transition-transform duration-200 bg-white/10 backdrop-blur-sm border-2 border-white/20"
-        style={{
-          background: isMusicOn ? '#E5DEFF' : '#FFDEE2',
-          boxShadow: '0 0 20px rgba(255, 255, 255, 0.2)',
-        }}
-      >
-        {isMusicOn ? (
-          <Music4 className="w-8 h-8 text-[#9b87f5] animate-bounce" />
-        ) : (
-          <Music className="w-8 h-8 text-[#403E43]" />
-        )}
-      </button>
+      <MusicController 
+        isStarted={isStarted}
+        isMusicOn={isMusicOn}
+        onToggleMusic={toggleMusic}
+      />
 
       {/* Custom Cursor */}
       <div
@@ -204,7 +133,6 @@ const Index = () => {
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
-        {/* Social Links & Contract Address */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
           <ContractAddress address={contractAddress} />
           
