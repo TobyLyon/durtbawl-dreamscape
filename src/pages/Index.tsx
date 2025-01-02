@@ -18,6 +18,7 @@ const Index = () => {
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
   const [isMusicOn, setIsMusicOn] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -63,13 +64,14 @@ const Index = () => {
   };
 
   const handleContractClick = () => {
+    setIsStarted(true);
     setIsMusicOn(true);
   };
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
       <MusicController 
-        isStarted={true}
+        isStarted={isStarted}
         isMusicOn={isMusicOn}
         onToggleMusic={toggleMusic}
       />
