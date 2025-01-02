@@ -15,6 +15,7 @@ const Index = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
+  const [audio] = useState(new Audio('/firework-sound.mp3'));
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
@@ -41,6 +42,11 @@ const Index = () => {
     }));
 
     setFireworks(prev => [...prev, ...newFireworks]);
+    
+    // Play sound effect
+    audio.currentTime = 0; // Reset audio to start
+    audio.play().catch(err => console.log('Audio playback failed:', err));
+    
     setTimeout(() => {
       setFireworks(prev => prev.filter(fw => !newFireworks.includes(fw)));
     }, 800);
