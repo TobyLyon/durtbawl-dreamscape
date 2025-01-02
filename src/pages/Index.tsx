@@ -66,6 +66,15 @@ const Index = () => {
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
+      {/* Title GIF */}
+      <div className="absolute top-4 left-0 w-full flex justify-center z-50">
+        <img 
+          src="/text.gif" 
+          alt="Title GIF" 
+          className="max-w-[80%] md:max-w-[60%] lg:max-w-[40%] h-auto"
+        />
+      </div>
+
       <MusicController 
         isMusicOn={isMusicOn}
         onToggleMusic={toggleMusic}
