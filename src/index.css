@@ -99,6 +99,16 @@ body {
   }
 }
 
+/* Social Button Animation */
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
+
 /* Firework Animation */
 @keyframes explode {
   0% {
@@ -123,14 +133,6 @@ body {
 /* Existing styles */
 .gradient-bg {
   background: linear-gradient(135deg, #FF3366 0%, #FF7F50 100%);
-}
-
-.hover-scale {
-  transition: transform 0.2s ease-in-out;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
 }
 
 .gradient-text {
