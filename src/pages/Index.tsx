@@ -1,4 +1,4 @@
-import { Twitter, Globe } from "lucide-react";
+import { Twitter, Globe, Music, Music4 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -18,21 +18,24 @@ const Index = () => {
   const [audio] = useState(new Audio('/firework-sound.wav'));
   const bgMusicRef = useRef(new Audio('/Wii Music - Rate Your Vid.mp3'));
   const [isStarted, setIsStarted] = useState(false);
+  const [isMusicOn, setIsMusicOn] = useState(true);
 
   useEffect(() => {
     const bgMusic = bgMusicRef.current;
     bgMusic.volume = 0.5;
     bgMusic.loop = true;
     
-    if (isStarted) {
+    if (isStarted && isMusicOn) {
       bgMusic.play().catch(err => console.log('Background music playback failed:', err));
+    } else {
+      bgMusic.pause();
     }
 
     return () => {
       bgMusic.pause();
       bgMusic.currentTime = 0;
     };
-  }, [isStarted]);
+  }, [isStarted, isMusicOn]);
 
   useEffect(() => {
     if (!isStarted) return;
@@ -75,6 +78,11 @@ const Index = () => {
     createFirework(e.clientX, e.clientY);
   };
 
+  const toggleMusic = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent firework creation
+    setIsMusicOn(!isMusicOn);
+  };
+
   if (!isStarted) {
     return (
       <div 
@@ -99,6 +107,22 @@ const Index = () => {
 
   return (
     <div className="h-screen w-full fixed inset-0 overflow-hidden" onClick={handleClick}>
+      {/* Music Toggle Button */}
+      <button
+        onClick={toggleMusic}
+        className="fixed top-4 right-4 z-50 p-4 rounded-full hover:scale-110 transition-transform duration-200 bg-white/10 backdrop-blur-sm border-2 border-white/20"
+        style={{
+          background: isMusicOn ? '#E5DEFF' : '#FFDEE2',
+          boxShadow: '0 0 20px rgba(255, 255, 255, 0.2)',
+        }}
+      >
+        {isMusicOn ? (
+          <Music4 className="w-8 h-8 text-[#9b87f5] animate-bounce" />
+        ) : (
+          <Music className="w-8 h-8 text-[#403E43]" />
+        )}
+      </button>
+
       {/* Custom Cursor */}
       <div
         className="custom-cursor"
@@ -108,7 +132,6 @@ const Index = () => {
         }}
       />
       
-      {/* Cursor Trails */}
       {trails.map((trail, index) => (
         <div
           key={trail.id}
