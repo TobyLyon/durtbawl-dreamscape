@@ -48,6 +48,7 @@ body {
   mix-blend-mode: plus-lighter;
   filter: blur(2px) contrast(200%) brightness(150%);
   animation: cursor-sparkle 1s infinite;
+  border-radius: 50%;
 }
 
 @keyframes cursor-sparkle {
@@ -86,6 +87,7 @@ body {
   filter: blur(1px) contrast(150%) brightness(130%);
   transition: all 0.1s ease;
   animation: trail-sparkle 0.5s infinite;
+  border-radius: 50%;
 }
 
 @keyframes trail-sparkle {
