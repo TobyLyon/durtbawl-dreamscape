@@ -11,7 +11,7 @@ interface Firework {
 }
 
 const Index = () => {
-  const contractAddress = "0x1234567890123456789012345678901234567890";
+  const contractAddress = "0x2aBedBB669C4d6C4e14721dE8e67Dfe69B713630";
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
@@ -94,7 +94,7 @@ const Index = () => {
         </div>
       ))}
 
-          {/* Background Image */}
+      {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -125,7 +125,7 @@ const Index = () => {
             />
             <SocialButton
               icon={Globe}
-              href="https://durtbawl.com"
+              href="https://app.virtuals.io/prototypes/0x2aBedBB669C4d6C4e14721dE8e67Dfe69B713630"
               label="Virtuals App"
             />
           </div>
