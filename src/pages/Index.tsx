@@ -103,8 +103,10 @@ const Index = () => {
       />
 
       {/* FUGLY Labs Tag */}
-      <div className="absolute top-6 right-8 text-xs font-light tracking-wider text-[#8E9196] opacity-75">
-        a project by FUGLY Labs
+      <div className="absolute top-6 right-8 px-4 py-1.5 bg-black/30 backdrop-blur-sm rounded-full">
+        <span className="text-sm font-medium tracking-wider text-white/90">
+          a project by FUGLY Labs
+        </span>
       </div>
 
       {/* Title GIF */}
