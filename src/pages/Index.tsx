@@ -102,6 +102,11 @@ const Index = () => {
         }}
       />
 
+      {/* FUGLY Labs Tag */}
+      <div className="absolute top-6 right-8 text-xs font-light tracking-wider text-[#8E9196] opacity-75">
+        a project by FUGLY Labs
+      </div>
+
       {/* Title GIF */}
       <div className="absolute top-4 left-0 w-full flex justify-center">
         <img 
