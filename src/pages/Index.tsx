@@ -102,20 +102,20 @@ const Index = () => {
         }}
       />
 
-      {/* FUGLY Labs Tag */}
-      <div className="absolute top-6 right-8">
-        <span className="text-sm font-medium tracking-wider text-white/90">
-          a project by FUGLY Labs
-        </span>
-      </div>
-
       {/* Title GIF */}
-      <div className="absolute top-4 left-0 w-full flex justify-center">
+      <div className="absolute top-4 left-0 w-full flex flex-col items-center">
         <img 
           src="/text.gif" 
           alt="Title GIF" 
           className="w-[90%] md:w-[80%] lg:w-[70%] h-auto max-w-[800px]"
         />
+        
+        {/* FUGLY Labs Tag - Moved inside the title container */}
+        <div className="mt-4">
+          <span className="text-sm font-medium tracking-wider text-white/90">
+            a project by FUGLY Labs
+          </span>
+        </div>
       </div>
       
       {/* Content */}
