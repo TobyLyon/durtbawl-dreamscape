@@ -1,4 +1,4 @@
-import { Twitter, Globe } from "lucide-react";
+import { Twitter, Globe, Telegram } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -102,11 +102,19 @@ const Index = () => {
         }}
       />
 
-      {/* FUGLY Labs Tag */}
-      <div className="absolute top-6 right-8 px-4 py-1.5 bg-black/30 backdrop-blur-sm rounded-full">
-        <span className="text-sm font-medium tracking-wider text-white/90">
-          a project by FUGLY Labs
-        </span>
+      {/* FUGLY Labs Tag and Telegram Button */}
+      <div className="absolute top-6 right-8 flex items-center gap-4">
+        <SocialButton
+          icon={Telegram}
+          href="https://t.me/durtbawl"
+          label="Join"
+          className="!bg-[#229ED9]/90 hover:!bg-[#229ED9]"
+        />
+        <div className="px-4 py-1.5 bg-black/30 backdrop-blur-sm rounded-full">
+          <span className="text-sm font-medium tracking-wider text-white/90">
+            a project by FUGLY Labs
+          </span>
+        </div>
       </div>
 
       {/* Title GIF */}
