@@ -109,7 +109,7 @@ const Index = () => {
         />
         
         {/* FUGLY Labs Tag - Positioned above character's head */}
-        <div className="mt-[-445px] md:mt-[-455px]">
+        <div className="mt-[-445px] md:mt-[-465px]">
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
