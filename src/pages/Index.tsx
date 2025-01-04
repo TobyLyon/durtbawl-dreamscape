@@ -1,4 +1,4 @@
-import { Twitter, Globe, MessageCircle } from "lucide-react";
+import { Twitter, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -114,14 +114,14 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="max-w-[135%] md:max-w-[105%] lg:max-w-[90%] h-auto"
+          className="w-[90%] md:w-[80%] lg:w-[70%] h-auto max-w-[800px]"
         />
       </div>
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
         {/* Social Links & Contract Address */}
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8">
+        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 mt-auto pt-20 md:pt-0">
           <ContractAddress address={contractAddress} />
           
           <div className="flex flex-wrap justify-center gap-4">
