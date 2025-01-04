@@ -110,11 +110,9 @@ const Index = () => {
           label="Join"
           className="!bg-[#229ED9]/90 hover:!bg-[#229ED9]"
         />
-        <div className="px-4 py-1.5 bg-black/30 backdrop-blur-sm rounded-full">
-          <span className="text-sm font-medium tracking-wider text-white/90">
-            a project by FUGLY Labs
-          </span>
-        </div>
+        <span className="text-sm font-medium tracking-wider text-white/90">
+          a project by FUGLY Labs
+        </span>
       </div>
 
       {/* Title GIF */}
