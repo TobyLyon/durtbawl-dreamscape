@@ -109,7 +109,7 @@ const Index = () => {
         />
         
         {/* FUGLY Labs Tag - Overlapping with bottom of title */}
-        <div className="-mt-30">
+        <div style={{ marginTop: '-120px' }}>
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
