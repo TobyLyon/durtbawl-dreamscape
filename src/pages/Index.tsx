@@ -1,5 +1,5 @@
 import { Twitter, Globe } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
 
@@ -16,25 +16,10 @@ const Index = () => {
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
   const [audio] = useState(new Audio('/firework-sound.wav'));
-  const [isDragging, setIsDragging] = useState(false);
-  const [titlePosition, setTitlePosition] = useState({ x: 0, y: 0 });
-  const titleRef = useRef<HTMLDivElement>(null);
-  const dragStartPos = useRef({ x: 0, y: 0, elemX: 0, elemY: 0 });
 
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
-      
-      if (isDragging && titleRef.current) {
-        const dx = e.clientX - dragStartPos.current.x;
-        const dy = e.clientY - dragStartPos.current.y;
-        
-        setTitlePosition({
-          x: dragStartPos.current.elemX + dx,
-          y: dragStartPos.current.elemY + dy,
-        });
-      }
-
       setTrails(prev => [
         { x: e.clientX, y: e.clientY, id: Date.now() },
         ...prev.slice(0, 5),
@@ -43,28 +28,6 @@ const Index = () => {
 
     window.addEventListener('mousemove', updateCursor);
     return () => window.removeEventListener('mousemove', updateCursor);
-  }, [isDragging]);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (titleRef.current) {
-      setIsDragging(true);
-      const rect = titleRef.current.getBoundingClientRect();
-      dragStartPos.current = {
-        x: e.clientX,
-        y: e.clientY,
-        elemX: titlePosition.x,
-        elemY: titlePosition.y,
-      };
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => window.removeEventListener('mouseup', handleMouseUp);
   }, []);
 
   const createFirework = (x: number, y: number) => {
@@ -88,9 +51,7 @@ const Index = () => {
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    if (!isDragging) {
-      createFirework(e.clientX, e.clientY);
-    }
+    createFirework(e.clientX, e.clientY);
   };
 
   return (
@@ -140,23 +101,15 @@ const Index = () => {
       />
 
       {/* Title GIF Container */}
-      <div 
-        ref={titleRef}
-        className="absolute top-4 left-0 w-full flex flex-col items-center cursor-move"
-        style={{
-          transform: `translate(${titlePosition.x}px, ${titlePosition.y}px)`,
-        }}
-        onMouseDown={handleMouseDown}
-      >
+      <div className="absolute top-12 left-0 w-full flex flex-col items-center">
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="w-[120%] md:w-[85%] lg:w-[75%] h-auto max-w-[1000px]"
-          draggable="false"
+          className="w-[140%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
         />
         
         {/* FUGLY Labs Tag - Directly under the title */}
-        <div className="mt-1">
+        <div className="-mt-4">
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
