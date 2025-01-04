@@ -105,7 +105,7 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="w-[280%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
+          className="w-[252%] md:w-[85.5%] lg:w-[76.5%] h-auto max-w-[1080px]"
         />
         
         {/* FUGLY Labs Tag - Positioned above character's head */}
