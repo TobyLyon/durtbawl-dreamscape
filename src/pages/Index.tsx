@@ -108,8 +108,8 @@ const Index = () => {
           className="w-[140%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
         />
         
-        {/* FUGLY Labs Tag - Directly under the title */}
-        <div className="-mt-4">
+        {/* FUGLY Labs Tag - Overlapping with bottom of title */}
+        <div className="-mt-16">
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
