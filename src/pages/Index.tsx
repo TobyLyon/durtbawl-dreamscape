@@ -1,4 +1,4 @@
-import { Twitter, Globe, Telegram } from "lucide-react";
+import { Twitter, Globe, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -105,7 +105,7 @@ const Index = () => {
       {/* FUGLY Labs Tag and Telegram Button */}
       <div className="absolute top-6 right-8 flex items-center gap-4">
         <SocialButton
-          icon={Telegram}
+          icon={MessageCircle}
           href="https://t.me/durtbawl"
           label="Join"
           className="!bg-[#229ED9]/90 hover:!bg-[#229ED9]"
