@@ -108,8 +108,8 @@ const Index = () => {
           className="w-[280%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
         />
         
-        {/* FUGLY Labs Tag - Overlapping with bottom of title */}
-        <div style={{ marginTop: '-240px' }}>
+        {/* FUGLY Labs Tag - Positioned above character's head */}
+        <div style={{ marginTop: '-420px' }}>
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
