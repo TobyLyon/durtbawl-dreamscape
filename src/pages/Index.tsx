@@ -105,11 +105,11 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="w-[140%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
+          className="w-[280%] md:w-[95%] lg:w-[85%] h-auto max-w-[1200px]"
         />
         
         {/* FUGLY Labs Tag - Overlapping with bottom of title */}
-        <div style={{ marginTop: '-288px' }}>
+        <div style={{ marginTop: '-240px' }}>
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
