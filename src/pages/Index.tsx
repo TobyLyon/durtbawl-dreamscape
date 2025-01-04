@@ -107,11 +107,11 @@ const Index = () => {
         <img 
           src="/text.gif" 
           alt="Title GIF" 
-          className="w-[95%] md:w-[85%] lg:w-[75%] h-auto max-w-[1000px]"
+          className="w-[120%] md:w-[85%] lg:w-[75%] h-auto max-w-[1000px]"
         />
         
         {/* FUGLY Labs Tag - Directly under the title */}
-        <div className="mt-2">
+        <div className="mt-1">
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
