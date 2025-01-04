@@ -109,7 +109,7 @@ const Index = () => {
         />
         
         {/* FUGLY Labs Tag - Positioned above character's head */}
-        <div style={{ marginTop: '-420px' }}>
+        <div style={{ marginTop: '-275px' }}>
           <span className="text-sm font-medium tracking-wider text-white/90">
             a project by FUGLY Labs
           </span>
