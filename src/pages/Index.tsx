@@ -98,16 +98,9 @@ const Index = () => {
         }}
       />
 
-      {/* Title GIF Container */}
-      <div className="absolute top-12 left-0 w-full flex flex-col items-center">
-        <img 
-          src="/text.gif" 
-          alt="Title GIF" 
-          className="w-[252%] md:w-[85.5%] lg:w-[76.5%] h-auto max-w-[1080px]"
-        />
-        
-        {/* New Tagline - On Abstract Chain */}
-        <div className="mt-[-465px] md:mt-[-445px]">
+      {/* New Tagline - On Abstract Chain */}
+      <div className="absolute top-[35%] left-0 w-full flex flex-col items-center">
+        <div>
           <span className="text-sm font-medium tracking-wider text-white/90">
             On Abstract Chain✳️
           </span>
