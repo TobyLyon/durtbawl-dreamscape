@@ -100,7 +100,7 @@ const Index = () => {
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 -mt-48 md:-mt-48">
+        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 mt-24 md:mt-24">
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
               icon={Twitter}
