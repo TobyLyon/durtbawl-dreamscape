@@ -20,7 +20,7 @@ const SocialButton = ({ icon: Icon, href, label, className }: SocialButtonProps)
       )}
       onClick={() => window.open(href, "_blank")}
     >
-      <Icon className="w-5 h-5" />
+      <Icon className="w-5 h-55" />
       <span>{label}</span>
     </Button>
   );
