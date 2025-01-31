@@ -97,19 +97,10 @@ const Index = () => {
           backgroundImage: `url('/lovable-uploads/c4f01bc7-98d3-46ee-9b80-54505deb6ec6.png')`,
         }}
       />
-
-      {/* New Tagline - On Abstract Chain */}
-      <div className="absolute top-[35%] left-0 w-full flex flex-col items-center">
-        <div>
-          <span className="text-sm font-medium tracking-wider text-white/90">
-            On Abstract Chain✳️
-          </span>
-        </div>
-      </div>
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 mt-auto pt-20 md:pt-0">
+        <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 mt-auto pt-16 md:pt-0">
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
               icon={Twitter}
