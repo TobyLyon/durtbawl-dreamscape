@@ -1,7 +1,6 @@
-import { Twitter, Globe } from "lucide-react";
+import { Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
-import ContractAddress from "@/components/ContractAddress";
 
 interface Firework {
   id: number;
@@ -11,7 +10,6 @@ interface Firework {
 }
 
 const Index = () => {
-  const contractAddress = "0x2aBedBB669C4d6C4e14721dE8e67Dfe69B713630";
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
   const [fireworks, setFireworks] = useState<Firework[]>([]);
@@ -96,7 +94,7 @@ const Index = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/DURTBAWL.png')`,
+          backgroundImage: `url('/lovable-uploads/c4f01bc7-98d3-46ee-9b80-54505deb6ec6.png')`,
         }}
       />
 
@@ -108,30 +106,22 @@ const Index = () => {
           className="w-[252%] md:w-[85.5%] lg:w-[76.5%] h-auto max-w-[1080px]"
         />
         
-        {/* FUGLY Labs Tag - Positioned above character's head */}
-        <div className="mt-[-445px] md:mt-[-465px]">
+        {/* New Tagline - On Abstract Chain */}
+        <div className="mt-[-465px] md:mt-[-445px]">
           <span className="text-sm font-medium tracking-wider text-white/90">
-            a project by FUGLY Labs
+            On Abstract Chain✳️
           </span>
         </div>
       </div>
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end p-6 md:p-12">
-        {/* Social Links & Contract Address */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-8 mb-8 mt-auto pt-20 md:pt-0">
-          <ContractAddress address={contractAddress} />
-          
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
               icon={Twitter}
-              href="https://twitter.com/durtbawl_AI"
+              href="https://x.com/fuglyfam"
               label="Twitter"
-            />
-            <SocialButton
-              icon={Globe}
-              href="https://app.virtuals.io/prototypes/0x2aBedBB669C4d6C4e14721dE8e67Dfe69B713630"
-              label="Virtuals App"
             />
           </div>
         </div>
