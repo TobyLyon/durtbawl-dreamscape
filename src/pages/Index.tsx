@@ -126,7 +126,7 @@ const Index = () => {
         {/* Bottom content */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-6 mb-6 md:mb-8">
           {/* Contract Address */}
-          <ContractAddress address="0x1234...5678" />
+          <ContractAddress address="0xda2abf18930a47e8e30adeee65bd4f263d360c3dd752f89550211bbe74e191bd::fugly::FUGLY" />
           
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
