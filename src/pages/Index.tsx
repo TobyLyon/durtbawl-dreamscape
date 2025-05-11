@@ -1,5 +1,5 @@
 
-import { Twitter } from "lucide-react";
+import { Twitter, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -133,6 +133,11 @@ const Index = () => {
               icon={Twitter}
               href="https://x.com/fuglyfam"
               label="Twitter"
+            />
+            <SocialButton
+              icon={MessageCircle}
+              href="https://t.me/fuglyfam"
+              label="Telegram"
             />
           </div>
         </div>
