@@ -112,12 +112,12 @@ const Index = () => {
       
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-between p-4 md:p-12">
-        {/* SUI Logo at the top */}
+        {/* Abstract Logo at the top */}
         <div className="w-full flex justify-center mt-4 md:mt-8">
           <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg">
             <img 
               src="/lovable-uploads/625977fa-a65b-4e7c-a8aa-bb65f0955744.png" 
-              alt="SUI Logo" 
+              alt="Abstract Logo" 
               className="h-12 md:h-16"
             />
           </div>
