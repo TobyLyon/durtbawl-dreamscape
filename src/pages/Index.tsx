@@ -116,7 +116,7 @@ const Index = () => {
         <div className="w-full flex justify-center mt-4 md:mt-8">
           <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg">
             <img 
-              src="/lovable-uploads/625977fa-a65b-4e7c-a8aa-bb65f0955744.png" 
+              src="/lovable-uploads/c2a58816-46c4-461c-802e-5dfddbad7af2.png" 
               alt="Abstract Logo" 
               className="h-12 md:h-16"
             />
