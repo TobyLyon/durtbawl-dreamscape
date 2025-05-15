@@ -1,15 +1,12 @@
+
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Copy } from "lucide-react";
 
-interface ContractAddressProps {
-  address: string;
-}
-
-const ContractAddress = ({ address }: ContractAddressProps) => {
-  const copyAddress = () => {
-    navigator.clipboard.writeText(address);
-    toast.success("Contract address copied to clipboard!");
+const ContractAddress = () => {
+  const copyMessage = () => {
+    navigator.clipboard.writeText("Coming Soon");
+    toast.success("Coming Soon message copied to clipboard!");
   };
 
   return (
@@ -18,9 +15,9 @@ const ContractAddress = ({ address }: ContractAddressProps) => {
       <Button
         variant="outline"
         className="w-full font-mono text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover-scale"
-        onClick={copyAddress}
+        onClick={copyMessage}
       >
-        <span className="truncate">{address}</span>
+        <span>Coming Soon</span>
         <Copy className="w-4 h-4 ml-2" />
       </Button>
     </div>

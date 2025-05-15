@@ -1,5 +1,4 @@
-
-import { Twitter, MessageCircle } from "lucide-react";
+import { Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
 import SocialButton from "@/components/SocialButton";
 import ContractAddress from "@/components/ContractAddress";
@@ -126,18 +125,13 @@ const Index = () => {
         {/* Bottom content */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-6 mb-6 md:mb-8">
           {/* Contract Address */}
-          <ContractAddress address="0xda2abf18930a47e8e30adeee65bd4f263d360c3dd752f89550211bbe74e191bd::fugly::FUGLY" />
+          <ContractAddress />
           
           <div className="flex flex-wrap justify-center gap-4">
             <SocialButton
               icon={Twitter}
               href="https://x.com/fuglyfam"
               label="Twitter"
-            />
-            <SocialButton
-              icon={MessageCircle}
-              href="https://t.me/fuglyfam"
-              label="Telegram"
             />
           </div>
         </div>
